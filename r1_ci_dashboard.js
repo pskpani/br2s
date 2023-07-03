@@ -123,19 +123,10 @@ let qaulitygatePivotData = new WebDataRocks({
     }
 });
 
-function getProjectJSONData() {
-    //console.log(cicdData.projectData)
-    console.log(document.getElementById("lastUpdated"));
-    document.getElementById("lastUpdated").innerHTML = "Last Upd: " + cicdData.lastUpdated;
-
-    return cicdData.projectData;
-}
-
 function getQualityGateJSONData() {
     //console.log(cicdData.projectData)
     return cicdData.qualityGates;
 }
-
 
 //-----------------------------------------------------------------------------------------------------------
 //Quality Gate CI Charts
@@ -239,7 +230,6 @@ function drawQualityGateCIChart(rawData, category, idNo) {
     });
 }
 
-
 //-------------------------------------------------------------------------------------------------------
 //Overall CI Chart
 let overallCIChart;
@@ -255,7 +245,7 @@ function createOverallCIChart() {
 }
 
 function drawOveralCIChart(rawData) {
-    console.log("rawData", rawData);
+    //console.log("rawData", rawData);
     let data_for_charts = preparePieDataFunction(rawData);
     let ctx = document.getElementById("overallCIStatus").getContext("2d");
     overallCIChart = new Chart(ctx, {
@@ -306,21 +296,6 @@ function drawOveralCIChart(rawData) {
 function updateOverallCIChart(rawData) {
     //overallCIChart.dispose();
     //drawOveralCIChart(rawData);
-}
-
-function getColorCode(status) {
-    switch(status) {
-        case "failed":
-            return 'rgb(255, 99, 132)'; //Red
-        case "success":
-            return 'rgb(75, 192, 192)'; //Green
-        case "success with warnings":
-            return 'rgb(255, 159, 64)'; //Orance
-        case "pending":
-            return 'rgb(201, 203, 207)'; //Grey
-        default:
-            return 'rgb(0, 0, 0)'; //Black 
-    }
 }
 
 //--------------------------------------------------------------------------------------------------------------
@@ -522,7 +497,6 @@ function prepareClusterBarDataFunction(rawData) {
 }
 
 function drawCategoryCIChart(rawData) {
-
     let data_for_charts = prepareClusterBarDataFunction(rawData);
     //console.log("data_for_charts", data_for_charts)
     let ctx = document.getElementById("categoryCIStatusChart").getContext("2d");
@@ -556,7 +530,6 @@ function drawCategoryCIChart(rawData) {
               }
         }
     });
-
 }
 
 function updateCategoryCIChart(rawData) {
